@@ -56,6 +56,11 @@ module RackRabbit
         channel.reject(delivery_tag, false)
       end
 
+      def connection_options
+        return @connection_options[:uri] unless @connection_options[:uri].nil?
+        super
+      end
+
       #========================================================================
       # PRIVATE IMPLEMENTATION
       #========================================================================
