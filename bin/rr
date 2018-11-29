@@ -11,6 +11,7 @@ COMMANDS           = [ :request, :enqueue, :publish ]
 METHODS            = [ :get, :post, :put, :delete ]
 HOST_HELP          = "the rabbitMQ broker IP address (default: 127.0.0.1)"
 PORT_HELP          = "the rabbitMQ broker port (default: 5672)"
+URI_HELP           = "the rabbitMQ broker URI (default: nil, superceds HOST and PORT if provided)"
 QUEUE_HELP         = "a queue for publishing outgoing requests"
 EXCHANGE_HELP      = "publish to a non-default exchange - name"
 EXCHANGE_TYPE_HELP = "publish to a non-default exchange - type (e.g. :direct, :fanout, :topic)"
@@ -46,6 +47,7 @@ parser.separator " rr publish -e ex -t topic -r foo POST   /submit 'data'  # sub
 parser.separator ""
 parser.separator "RackRabbit options:"
 parser.on(      "--host HOST",         HOST_HELP)          { |value| options[:rabbit][:host] = value }
+parser.on(      "--uri HOST",          URI_HELP)           { |value| options[:rabbit][:uri]  = value }
 parser.on(      "--port PORT",         PORT_HELP)          { |value| options[:rabbit][:port] = value }
 parser.on("-q", "--queue QUEUE",       QUEUE_HELP)         { |value| options[:queue]         = value }
 parser.on("-e", "--exchange EXCHANGE", EXCHANGE_HELP)      { |value| options[:exchange]      = value }
